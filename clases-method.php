@@ -2,14 +2,18 @@
 class User
 {
 
-	public $id;
-	public $username;
-	public $email;
-	public $password;
+	// public $id = 33 ;
+	private $id;
+	private $username;
+	private $email;
+	private $password;
 
-	public function __construct()
+	public function __construct($username, $password)
 	{
 		//echo 'Constructor called';
+		//
+		$this -> username = $username;
+    $this -> password = $password;
 	}
 
 	public function register()
@@ -17,14 +21,18 @@ class User
 		echo 'User registered';
 	}
 
-	public function login($username, $password)
+	public function login()
 	{
-		$this->auth_user($username, $password);
+    // $this -> username = $username;
+    // $this -> password = $password;
+
+		// $this->auth_user();
 	}
 
-	public function auth_user($username, $password)
+	public function auth_user()
 	{
-		echo $username.' is authenticated';
+		echo $this->username.' is authenticated';
+		// echo $this->id;
 	}
 
 	public function __destruct()
@@ -34,8 +42,17 @@ class User
 
 }
 
-$user = new User();
-// $user -> register();
-$user->login('Rojas', 'Snts');
+$user = new User('Rojas', 'password');
+$user -> register();
+// $user->login('Rojas', 'password');
+
+// $user->login();
+
+// echo $user -> username;
+
+
+
+
+
 
 ?>
