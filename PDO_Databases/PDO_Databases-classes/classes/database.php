@@ -40,7 +40,7 @@ class Database{
           $type = PDO::PARAM_INT;
           break;
 
-          case is_bool($type):
+          case is_bool($value):
           $type = PDO::PARAM_BOOL;
           break;
 
@@ -49,7 +49,7 @@ class Database{
           break;
 
           default:
-          $value = PDO::PARAM_STR;
+          $type = PDO::PARAM_STR;
       }
     }
 
@@ -59,6 +59,11 @@ class Database{
   public function execute()
   {
     return $this->statement->execute();
+  }
+
+  public function lastInsertId()
+  {
+    $this->dbHandler->lastInsertId();
   }
 
   public function resultset()
