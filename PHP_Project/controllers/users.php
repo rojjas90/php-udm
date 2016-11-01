@@ -1,7 +1,7 @@
 <?php
 
 class Users extends Controller{
-  protected function Index(){
-    echo 'Users/Index';
-  }
+  // protected function Index(){
+  //   echo 'Users/Index';
+  // }
 }
