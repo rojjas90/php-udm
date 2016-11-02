@@ -7,9 +7,9 @@
           <hr/>
           <p>
                <?php echo $item['body']; ?>
-               <br />
-               <a class="btn btn-default" href="<?php echo $item['link']; ?>" target="_blank">Go to website!</a>
           </p>
+          <br />
+          <a class="btn btn-default" href="<?php echo $item['link']; ?>" target="_blank">Go to website!</a>
      </div>
      <?php endforeach; ?>
 </div>
