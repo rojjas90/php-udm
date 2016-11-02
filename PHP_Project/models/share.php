@@ -7,6 +7,8 @@ class ShareModel extends Model {
     $this->query('SELECT * FROM shares');
     $rows = $this->resultSet();
 
-    echo print_r($rows);
+    // echo print_r($rows);
+
+    return $rows;
   }
 }
