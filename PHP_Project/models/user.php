@@ -33,4 +33,44 @@ class UserModel extends Model {
 
     return;
   }
+
+  public function login(){
+    // Sanitize POST
+    $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+    // Encripting password
+    $password = md5($post['password']);
+
+    if ($post['submit']) {
+
+      // die('SUBMITTED');
+
+      // Compare login
+
+      $this->query('SELECT * FROM users WHERE email = :email AND password = :password');
+      $this->bind(':email', $post['email']);
+      $this->bind(':password', $password);
+
+      $row = $this->single();
+
+      if ($row) {
+        // echo 'Logged in';
+        $_SESSION['is_logged_id'] = true;
+        $_SESSION['user_data'] = array(
+          "id" => $row['id'],
+          "name" => $row['name'],
+          "email" => $row['email']
+        );
+
+        // Redirect
+        header('Location:' . ROOT_URL . 'shares');
+      }
+      else {
+        echo 'Incorrect login';
+      }
+
+    }
+
+    return;
+  }
 }
