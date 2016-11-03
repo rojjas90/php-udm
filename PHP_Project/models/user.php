@@ -13,6 +13,11 @@ class UserModel extends Model {
 
     if ($post['submit']) {
 
+      if ($post['name'] == '' || $post['email'] == '' || $post['password'] == '') {
+        Messages::setMessage('Please fill in  all fields', 'error');
+        return;
+      }
+
       // die('SUBMITTED');
 
       // Insert into MySQL
@@ -55,18 +60,21 @@ class UserModel extends Model {
 
       if ($row) {
         // echo 'Logged in';
-        $_SESSION['is_logged_id'] = true;
+        $_SESSION['is_logged_in'] = true;
         $_SESSION['user_data'] = array(
           "id" => $row['id'],
           "name" => $row['name'],
           "email" => $row['email']
         );
 
+        // Messages::setMessage('You are loggin', 'success');
+
         // Redirect
         header('Location:' . ROOT_URL . 'shares');
       }
       else {
-        echo 'Incorrect login';
+        // echo 'Incorrect login';
+        Messages::setMessage('Incorrect login', 'error');
       }
 
     }
