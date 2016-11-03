@@ -74,40 +74,39 @@ $rows = $database->resultset();
 ?>
 
 <h1>Add post</h1>
-<form  method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+<form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
 
-  <label>Post ID</label>
-  <br/>
-  <input type="text" name="id" placeholder="Specify ID"/>
-  <br/>
+     <label>Post ID</label>
+     <br/>
+     <input type="text" name="id" placeholder="Specify ID" />
+     <br/>
 
-  <label>Post title</label>
-  <br/>
-  <input type="text" name="title" placeholder="Add a title..."/>
-  <br/>
-  <label>Post body</label>
-  <br/>
-  <textarea name="body"></textarea>
-  <br/>
-  <br/>
-  <input type="submit" name="submit" value="Submit"/>
+     <label>Post title</label>
+     <br/>
+     <input type="text" name="title" placeholder="Add a title..." />
+     <br/>
+     <label>Post body</label>
+     <br/>
+     <textarea name="body"></textarea>
+     <br/>
+     <br/>
+     <input type="submit" name="submit" value="Submit" />
 
 </form>
 
-
 <h1>Post</h1>
-<div >
-  <?php foreach($rows as $row) :  ?>
-  <div>
-    <h3><?php echo $row['title']; ?></h3>
-    <p>
-      <?php echo $row['body']; ?>
-    </p>
-    <br/>
-    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-      <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>"/>
-      <input type="submit" name="delete" value="Delete" />
-    </form>
-  </div>
-<?php endforeach; ?>
+<div>
+     <?php foreach($rows as $row) :  ?>
+     <div>
+          <h3><?php echo $row['title']; ?></h3>
+          <p>
+               <?php echo $row['body']; ?>
+          </p>
+          <br/>
+          <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+               <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>" />
+               <input type="submit" name="delete" value="Delete" />
+          </form>
+     </div>
+     <?php endforeach; ?>
 </div>

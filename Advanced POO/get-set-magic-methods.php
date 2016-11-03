@@ -26,7 +26,8 @@ $post = new Post;
 
 $post->name = 'Testing';
 
-echo $post->name;
+//echo 
+$post->name;
 
 var_dump(isset($post->name));
 
